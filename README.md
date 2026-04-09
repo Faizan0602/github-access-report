@@ -76,7 +76,7 @@ mvn spring-boot:run
 4. Access the API:
 
 ```
-http://localhost:8080/api/github/report?org=octokit
+http://localhost:8084/api/github/report?org=octokit
 ```
 
 > If port 8080 is in use, configure a different port in `application.properties`.
@@ -94,7 +94,7 @@ http://localhost:8080/api/github/report?org=octokit
 #### Example:
 
 ```
-http://localhost:8080/api/github/report?org=octokit
+http://localhost:8084/api/github/report?org=octokit
 ```
 
 ---
