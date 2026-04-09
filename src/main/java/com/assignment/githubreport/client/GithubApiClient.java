@@ -1,9 +1,8 @@
 package com.assignment.githubreport.client;
 
-import com.assignment.githubreport.client.model.GithubCollaboratorResponse;
-import com.assignment.githubreport.client.model.GithubRepositoryResponse;
-import com.assignment.githubreport.config.GithubProperties;
-import com.assignment.githubreport.exception.GithubApiException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.assignment.githubreport.client.model.GithubCollaboratorResponse;
+import com.assignment.githubreport.client.model.GithubRepositoryResponse;
+import com.assignment.githubreport.config.GithubProperties;
+import com.assignment.githubreport.exception.GithubApiException;
 
 @Component
 public class GithubApiClient {
@@ -34,7 +35,7 @@ public class GithubApiClient {
     }
 
     public List<GithubCollaboratorResponse> fetchRepositoryCollaborators(String org, String repositoryName) {
-        String firstPageUri = "/repos/%s/%s/collaborators?per_page=%d&page=1".formatted(org, repositoryName, githubProperties.perPage());
+        String firstPageUri = "/repos/%s/%s/contributors?per_page=%d&page=1".formatted(org, repositoryName, githubProperties.perPage());
         return fetchAllPages(firstPageUri, GithubCollaboratorResponse.class);
     }
 
